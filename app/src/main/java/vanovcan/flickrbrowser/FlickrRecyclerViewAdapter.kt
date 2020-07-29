@@ -12,7 +12,6 @@ import com.squareup.picasso.Picasso
 class FlickrImageViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var thumbnail: ImageView = view.findViewById(R.id.thumbnail)
     var title: TextView = view.findViewById(R.id.title)
-
 }
 
 class FlickrRecyclerViewAdapter(private var photoList: List<Photo>) : RecyclerView.Adapter<FlickrImageViewHolder>() {
