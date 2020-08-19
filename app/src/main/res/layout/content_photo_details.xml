@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="8dp"
@@ -23,6 +24,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/browse_image_description"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/placeholder" />
 
@@ -31,22 +34,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="TextView" />
+                tools:text="TextView" />
 
             <TextView
                 android:id="@+id/photo_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="TextView" />
+                tools:text="TextView" />
 
             <TextView
                 android:id="@+id/photo_tags"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="TextView"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:text="TextView" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </ScrollView>
