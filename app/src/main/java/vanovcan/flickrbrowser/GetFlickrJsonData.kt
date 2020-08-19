@@ -15,7 +15,7 @@ class GetFlickrJsonData(private val listener: OnDataAvailable) : AsyncTask<Strin
     }
 
     override fun doInBackground(vararg params: String): ArrayList<Photo> {
-        Log.d(TAG, "doInBackground starts")
+//        Log.d(TAG, "doInBackground starts")
 
         val photoList = ArrayList<Photo>()
         try {
@@ -36,7 +36,7 @@ class GetFlickrJsonData(private val listener: OnDataAvailable) : AsyncTask<Strin
                 val photoObject = Photo(title, author, authorId, link, tags, photoUrl)
 
                 photoList.add(photoObject)
-                Log.d(TAG, ".doInBackground $photoObject")
+//                Log.d(TAG, ".doInBackground $photoObject")
             }
         } catch (e: JSONException) {
             e.printStackTrace()
@@ -44,15 +44,15 @@ class GetFlickrJsonData(private val listener: OnDataAvailable) : AsyncTask<Strin
             cancel(true)
             listener.onError(e)
         }
-        Log.d(TAG, ".doInBackground ends")
+//        Log.d(TAG, ".doInBackground ends")
         return photoList
     }
 
     override fun onPostExecute(result: ArrayList<Photo>) {
-        Log.d(TAG, "onPostExecute starts")
+//        Log.d(TAG, "onPostExecute starts")
         super.onPostExecute(result)
         listener.onDataAvailable(result)
-        Log.d(TAG, ".onPostExecute ends")
+//        Log.d(TAG, ".onPostExecute ends")
     }
 
 

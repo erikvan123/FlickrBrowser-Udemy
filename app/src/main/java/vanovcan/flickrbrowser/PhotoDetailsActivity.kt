@@ -20,7 +20,6 @@ class PhotoDetailsActivity : BaseActivity() {
         photo_tags.text = resources.getString(R.string.photo_tags_text, photo.tags)
 
         photo_author.text = photo.author
-//          photo_author.text = resources.getString(R.string.photo_author_text, "my", "red", "car")
 
         Picasso.with(this).load(photo.link)
                 .error(R.drawable.placeholder)

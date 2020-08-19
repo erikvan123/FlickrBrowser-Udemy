@@ -1,6 +1,5 @@
 package vanovcan.flickrbrowser
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,14 +17,14 @@ class FlickrRecyclerViewAdapter(private var photoList: List<Photo>) : RecyclerVi
     private val TAG = "FlickrRecyclerViewAdptr"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlickrImageViewHolder {
-        Log.d(TAG, ".onCreateViewHolder new view requested")
+//        Log.d(TAG, ".onCreateViewHolder new view requested")
         val view = LayoutInflater.from(parent.context).inflate(R.layout.browse, parent, false)
         return FlickrImageViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         //Log.d(TAG, ".getItemCount called")
-        return if (photoList.isNotEmpty()) photoList.size else 0
+        return if (photoList.isNotEmpty()) photoList.size else 1
     }
 
     fun loadNewData(newPhotos: List<Photo>) {
@@ -38,13 +37,19 @@ class FlickrRecyclerViewAdapter(private var photoList: List<Photo>) : RecyclerVi
     }
 
     override fun onBindViewHolder(holder: FlickrImageViewHolder, position: Int) {
-        val photoItem = photoList[position]
-        //Log.d(TAG, ".onBindViewHolder: ${photoItem.title} --> $position")
-        Picasso.with(holder.thumbnail.context).load(photoItem.image)
-                .error(R.drawable.placeholder)
-                .placeholder(R.drawable.placeholder)
-                .into(holder.thumbnail)
 
-        holder.title.text = photoItem.title
+        if (photoList.isEmpty()) {
+            holder.thumbnail.setImageResource(R.drawable.placeholder)
+            holder.title.setText(R.string.empty_photo)
+        } else {
+            val photoItem = photoList[position]
+
+            Picasso.with(holder.thumbnail.context).load(photoItem.image)
+                    .error(R.drawable.placeholder)
+                    .placeholder(R.drawable.placeholder)
+                    .into(holder.thumbnail)
+
+            holder.title.text = photoItem.title
+        }
     }
 }
